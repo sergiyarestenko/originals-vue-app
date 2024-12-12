@@ -43,7 +43,7 @@ function createFirstTask(creatorId: string, developerId: string) {
       'Get the ball in the center of the field to pass all the defenders. to enter the square gate.',
     creatorId: creatorId,
     developerId: developerId,
-    status: 'TODO',
+    status: 'todo',
     priority: 'Normal',
   }
   tasksStore.createTask(firstTask)
@@ -55,7 +55,6 @@ function createFirstTask(creatorId: string, developerId: string) {
 
 onBeforeMount(() => {
   users.forEach((user: Omit<IUser, 'id'>) => usersStore.createUser(user))
-
 
   nextTick(() => {
     createFirstTask(usersStore.activeUsers[0].id, usersStore.activeUsers[1].id)

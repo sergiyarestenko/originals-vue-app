@@ -23,7 +23,7 @@ export const useTasksStore = defineStore('tasksStore', () => {
       ...task,
       id: createId(),
       developerId: task.developerId || '',
-      status: task.status || 'TODO',
+      status: task.status || 'todo',
       priority: task.priority || 'Normal',
     }
 
@@ -48,21 +48,19 @@ export const useTasksStore = defineStore('tasksStore', () => {
     tasks.value = tasks.value.map((task) => changeProp(id, 'developerId', developerIdValue, task))
   }
 
-  const todoTasks = computed(() => tasks.value.filter((task) => (task.status === 'TODO')))
+  const todo = computed(() => tasks.value.filter((task) => task.status === 'todo'))
 
-  const inProgressTasks = computed(() =>
-    tasks.value.filter((task) => (task.status === 'In progress')),
-  )
+  const inProgress = computed(() => tasks.value.filter((task) => task.status === 'inProgress'))
 
-  const doneTasks = computed(() => tasks.value.filter((task) => (task.status === 'Done')))
+  const done = computed(() => tasks.value.filter((task) => task.status === 'done'))
 
   return {
     createTask,
     changeStatus,
     changePriority,
     changeDeveloper,
-    todoTasks,
-    inProgressTasks,
-    doneTasks,
+    todo,
+    inProgress,
+    done,
   }
 })

@@ -4,7 +4,7 @@ export type IUser = {
   position: string
 }
 
-export type ITaskStatus = 'TODO' | 'In progress' | 'Done'
+export type ITaskStatus = 'todo' | 'inProgress' | 'done'
 export type IPriority = 'Hight' | 'Normal' | 'Low'
 
 export type ITask = {
