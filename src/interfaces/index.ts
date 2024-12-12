@@ -13,7 +13,6 @@ export type ITask = {
   description: string
   creatorId: IUser['id']
   developerId: IUser['id']
-
   status: ITaskStatus
   priority: IPriority
 }

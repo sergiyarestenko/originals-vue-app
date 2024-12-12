@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed,ref } from 'vue'
 import { useUsersStore } from '@/stores/users'
 import { useTasksStore } from '@/stores/tasks'
+import CreateUpdateTask from './CreateUpdateTask.vue';
+
 
 import type { ITask, ITaskStatus } from '@/interfaces'
 
@@ -45,6 +47,16 @@ const nextStatusName = computed(() => {
 })
 
 const tasksStore = useTasksStore()
+
+
+
+const isModal = ref(false)
+
+function closeModal() {
+  isModal.value = false
+}
+
+
 </script>
 <template>
   <div class="collapse bg-base-200 border">
@@ -58,17 +70,22 @@ const tasksStore = useTasksStore()
       <p>
         {{ task.description }}
       </p>
-      <p>Creator: {{ userName(task.creatorId) }}</p>
+      <p class="mt-3">Creator: {{ userName(task.creatorId) }}</p>
       <p v-if="task.developerId">Developer: {{ userName(task.developerId) }}</p>
-      <button class="btn btn-ghost btn-sm">Change task</button>
-      <button
-        v-if="statusName[props.status].next"
-        class="btn btn-ghost btn-sm"
-        :disabled="!task.developerId"
-        @click="tasksStore.changeStatus(task.id, statusName[props.status].next)"
-      >
-        Move to {{ nextStatusName }}
-      </button>
+      <div class="flex mt-3 gap-3">
+        <button class="btn btn-neutral btn-sm" @click="isModal = true">Update task</button>
+        <button
+          v-if="statusName[props.status].next"
+          class="btn btn-neutral btn-sm"
+          :disabled="!task.developerId"
+          @click="tasksStore.changeStatus(task.id, statusName[props.status].next)"
+        >
+          Move to {{ nextStatusName }}
+        </button>
+      </div>
     </div>
+    <Teleport to="body">
+      <CreateUpdateTask v-if="isModal" @close-modal="closeModal" :task="task"></CreateUpdateTask>
+    </Teleport>
   </div>
 </template>

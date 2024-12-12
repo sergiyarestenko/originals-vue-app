@@ -6,12 +6,7 @@ import type { ITask } from '@/interfaces'
 
 const createId = () => Math.random().toString(36).substr(2, 9)
 
-const changeProp = (
-  id: string,
-  key: 'status' | 'priority' | 'developerId',
-  value: string,
-  task: ITask,
-) => {
+const changeProp = (id: string, key: string, value: string, task: ITask) => {
   return task.id === id ? { ...task, [key]: value } : task
 }
 
@@ -24,7 +19,7 @@ export const useTasksStore = defineStore('tasksStore', () => {
       id: createId(),
       developerId: task.developerId || '',
       status: task.status || 'todo',
-      priority: task.priority || 'Normal',
+      priority: task.priority || 'normal',
     }
 
     addTask(newTask)
@@ -34,16 +29,10 @@ export const useTasksStore = defineStore('tasksStore', () => {
     tasks.value.push(task)
   }
 
-  function changeStatus(id: string, statusValue: string) {
-    tasks.value = tasks.value.map((task) => changeProp(id, 'status', statusValue, task))
-  }
-
-  function changePriority(id: string, priorityValue: string) {
-    tasks.value = tasks.value.map((task) => changeProp(id, 'priority', priorityValue, task))
-  }
-
-  function changeDeveloper(id: string, developerIdValue: string) {
-    tasks.value = tasks.value.map((task) => changeProp(id, 'developerId', developerIdValue, task))
+  function updateTask(id: string, updatedTask: Omit<ITask, 'id'>) {
+    for (const key in updatedTask) {
+      tasks.value = tasks.value.map((task) => changeProp(id, key, updatedTask[key], task))
+    }
   }
 
   const todo = computed(() => tasks.value.filter((task) => task.status === 'todo'))
@@ -54,9 +43,8 @@ export const useTasksStore = defineStore('tasksStore', () => {
 
   return {
     createTask,
-    changeStatus,
-    changePriority,
-    changeDeveloper,
+
+    updateTask,
     todo,
     inProgress,
     done,

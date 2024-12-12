@@ -27,7 +27,8 @@ const tasksList = computed(() => tasksStore[props.status])
 <template>
   <div class="card bg-base-100 w-full shadow-xl h-fit">
     <div class="card-body">
-      <h2 class="card-title">{{ statusName[props.status] }}</h2>
+      <h2 class="card-title"
+      :class="tasksList.length ? 'mb-3': ''">{{ statusName[props.status] }}</h2>
       <TaskCard v-for="task in tasksList" :key="task.id" :task="task" :status="props.status" />
     </div>
   </div>
