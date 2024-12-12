@@ -1,4 +1,4 @@
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 
 import { defineStore } from 'pinia'
 
@@ -22,10 +22,8 @@ export const useUsersStore = defineStore('usersStore', () => {
     users.value.push(user)
   }
 
-  const activeUsers = computed(() => users.value)
-
   return {
-    activeUsers,
+    users,
     createUser,
   }
 })

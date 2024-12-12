@@ -44,7 +44,7 @@ function createFirstTask(creatorId: string, developerId: string) {
     creatorId: creatorId,
     developerId: developerId,
     status: 'todo',
-    priority: 'Normal',
+    priority: 'normal',
   }
   tasksStore.createTask(firstTask)
 }
@@ -57,7 +57,7 @@ onBeforeMount(() => {
   users.forEach((user: Omit<IUser, 'id'>) => usersStore.createUser(user))
 
   nextTick(() => {
-    createFirstTask(usersStore.activeUsers[0].id, usersStore.activeUsers[1].id)
+    createFirstTask(usersStore.users[0].id, usersStore.users[1].id)
   })
 })
 </script>

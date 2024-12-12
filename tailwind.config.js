@@ -7,9 +7,9 @@ export default {
 
   content: [],
   theme: {
-    colors:{
+    colors: {
       'custom-header': 'rgba(255, 255, 255, .3)'
-    }, 
+    },
     extend: {},
   },
   plugins: [daisyui],

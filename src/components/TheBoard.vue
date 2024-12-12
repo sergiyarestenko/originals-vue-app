@@ -8,6 +8,10 @@ const taskStatuses: ITaskStatus[] = ['todo', 'inProgress', 'done']
 
 <template>
   <div class="flex flex-nowrap w-full p-5 gap-x-5">
-    <TaskList v-for="status in taskStatuses" :key="status" :status="status" />
+    <div v-for="status in taskStatuses" :key="status" class="flex w-full min-h-full">
+      <TaskList  :status="status" />
+
+    </div>
+
   </div>
 </template>

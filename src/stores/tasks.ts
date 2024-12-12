@@ -34,9 +34,7 @@ export const useTasksStore = defineStore('tasksStore', () => {
     tasks.value.push(task)
   }
 
-  function changeStatus(id: string, statusValue: string, developerId: string) {
-    if (!developerId) return
-
+  function changeStatus(id: string, statusValue: string) {
     tasks.value = tasks.value.map((task) => changeProp(id, 'status', statusValue, task))
   }
 
