@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import PageLayout from '../components/PageLayout.vue'
+import TheHeader from '@/components/TheHeader.vue'
+import TheBoard from '@/components/TheBoard.vue'
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <PageLayout>
+    <template #header>
+      <TheHeader />
+    </template>
+    <TheBoard />
+  </PageLayout>
 </template>

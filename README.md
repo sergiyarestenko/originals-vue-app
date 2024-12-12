@@ -8,6 +8,12 @@ This is a test task for obtaining the position of frontend developer at The Orig
 npm install
 ```
 
+## Switch to dev branch
+
+```sh
+git checkout dev
+```
+
 ### Compile and Hot-Reload for Development
 
 ```sh
