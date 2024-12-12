@@ -1,3 +1,5 @@
+/** @type {import('tailwindcss').Config} */
+
 import daisyui from 'daisyui'
 
 export default {
@@ -5,6 +7,9 @@ export default {
 
   content: [],
   theme: {
+    colors:{
+      'custom-header': 'rgba(255, 255, 255, .3)'
+    }, 
     extend: {},
   },
   plugins: [daisyui],

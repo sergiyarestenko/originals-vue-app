@@ -48,13 +48,13 @@ export const useTasksStore = defineStore('tasksStore', () => {
     tasks.value = tasks.value.map((task) => changeProp(id, 'developerId', developerIdValue, task))
   }
 
-  const todoTasks = computed(() => tasks.value.filter((task) => (task.status = 'TODO')))
+  const todoTasks = computed(() => tasks.value.filter((task) => (task.status === 'TODO')))
 
   const inProgressTasks = computed(() =>
-    tasks.value.filter((task) => (task.status = 'In progress')),
+    tasks.value.filter((task) => (task.status === 'In progress')),
   )
-  
-  const doneTasks = computed(() => tasks.value.filter((task) => (task.status = 'Done')))
+
+  const doneTasks = computed(() => tasks.value.filter((task) => (task.status === 'Done')))
 
   return {
     createTask,

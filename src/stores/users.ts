@@ -6,26 +6,7 @@ import type { IUser } from '@/interfaces'
 
 const createId = () => Math.random().toString(36).substr(2, 9)
 
-const mudryk: IUser = {
-  fullName: 'Mykhailo Mudryk',
-  position: 'Midfielder',
-}
-
-const zinchenko: IUser = {
-  fullName: 'Oleksandr Zinchenko',
-  position: 'Midfielder',
-}
-const dovbyk: IUser = {
-  fullName: 'Artem Dovbyk',
-  position: 'Attakers',
-}
-
-const zabarnyi: IUser = {
-  fullName: 'Illia Zabarnyi',
-  position: 'Defender',
-}
-
-export const useTasksStore = defineStore('tasksStore', () => {
+export const useUsersStore = defineStore('usersStore', () => {
   const users = ref<IUser[]>([])
 
   function createUser(user: Omit<IUser, 'id'>) {
@@ -41,7 +22,10 @@ export const useTasksStore = defineStore('tasksStore', () => {
     users.value.push(user)
   }
 
+  const activeUsers = computed(() => users.value)
+
   return {
-    users,
+    activeUsers,
+    createUser,
   }
 })
