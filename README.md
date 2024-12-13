@@ -6,6 +6,8 @@ This is a test task for obtaining the position of frontend developer at The Orig
 
 ```sh
 npm install
+npm install -D tailwindcss postcss autoprefixer vite
+npm tailwindcss init
 ```
 
 ## Switch to dev branch

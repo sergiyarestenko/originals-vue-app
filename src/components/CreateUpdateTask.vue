@@ -4,8 +4,6 @@ import type { ITask, ITaskStatus, IPriority } from '@/interfaces'
 import { useUsersStore } from '@/stores/users'
 import { useTasksStore } from '@/stores/tasks'
 
-// ITaskStatus
-
 const emit = defineEmits<{ (e: 'close-modal'): void }>()
 
 function closeModal(): void {
@@ -64,7 +62,6 @@ const currentTask = (): Omit<ITask, 'id'> => {
 }
 
 function createNewTask() {
-
   tasksStore.createTask(currentTask())
   closeModal()
 }

@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import { computed,ref } from 'vue'
+import { computed, ref } from 'vue'
+import type { ITask, ITaskStatus } from '@/interfaces'
 import { useUsersStore } from '@/stores/users'
 import { useTasksStore } from '@/stores/tasks'
-import CreateUpdateTask from './CreateUpdateTask.vue';
-
-
-import type { ITask, ITaskStatus } from '@/interfaces'
+import CreateUpdateTask from './CreateUpdateTask.vue'
 
 interface Props {
   task: ITask
@@ -48,15 +46,11 @@ const nextStatusName = computed(() => {
 
 const tasksStore = useTasksStore()
 
-
-
 const isModal = ref(false)
 
 function closeModal() {
   isModal.value = false
 }
-
-
 </script>
 <template>
   <div class="collapse bg-base-200 border">

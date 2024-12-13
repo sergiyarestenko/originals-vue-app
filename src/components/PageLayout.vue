@@ -1,8 +1,3 @@
-<script setup lang="ts">
-// import { useBackgroundStore } from '@/stores/background'
-// const backgroundStore = useBackgroundStore()
-</script>
-
 <template>
   <div
     class="sea-bg relative flex flex-col flex-nowrap w-full min-h-dvh bg-cover bg-center bg-no-repeat"
@@ -15,8 +10,8 @@
     </main>
   </div>
 </template>
-<style>
+<style scoped>
 .sea-bg {
-  background-image: url('@/assets/backgrounds/sea.webp');
+  background-image: url('@/assets/backgrounds/river.webp');
 }
 </style>

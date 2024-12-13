@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-
 import { StarIcon } from '@heroicons/vue/24/outline'
-
 import CreateUpdateTask from './CreateUpdateTask.vue';
 
 const isModal = ref(false)
@@ -10,9 +8,6 @@ const isModal = ref(false)
 function closeModal() {
   isModal.value = false
 }
-
-
-
 </script>
 <template>
   <div class="flex w-full bg-custom-header text-neutral-800 px-5 py-2">

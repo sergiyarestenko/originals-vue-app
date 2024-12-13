@@ -49,10 +49,6 @@ function createFirstTask(creatorId: string, developerId: string) {
   tasksStore.createTask(firstTask)
 }
 
-// // function getSomeUserId (num) {
-//   console.log()
-// }
-
 onBeforeMount(() => {
   users.forEach((user: Omit<IUser, 'id'>) => usersStore.createUser(user))
 

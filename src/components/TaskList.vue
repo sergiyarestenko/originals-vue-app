@@ -2,8 +2,6 @@
 import { computed } from 'vue'
 import type { ITaskStatus } from '@/interfaces'
 import { useTasksStore } from '@/stores/tasks'
-
-
 import TaskCard from './TaskCard.vue'
 
 interface Props {
